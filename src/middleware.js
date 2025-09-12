@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { auth0 } from "@/lib/auth0";
 
 export async function middleware(request) {
@@ -12,14 +11,6 @@ export async function middleware(request) {
   // public routes — no need to check for session
   if (request.nextUrl.pathname === "/") {
     return authRes;
-  }
-
-  const { origin } = new URL(request.url);
-  const session = await auth0.getSession();
-
-  // user does not have a session — redirect to login
-  if (!session) {
-    return NextResponse.redirect(`${origin}/auth/login`);
   }
 
   return authRes;
