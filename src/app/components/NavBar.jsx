@@ -1,6 +1,6 @@
-'use  client';
+"use  client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Container,
@@ -12,12 +12,12 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
-import { useUser } from '@auth0/nextjs-auth0';
+  DropdownItem,
+} from "reactstrap";
+import { useUser } from "@auth0/nextjs-auth0";
 
-import PageLink from './PageLink';
-import AnchorLink from './AnchorLink';
+import PageLink from "./PageLink";
+import AnchorLink from "./AnchorLink";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,18 +40,39 @@ const NavBar = () => {
               {user && (
                 <>
                   <NavItem>
-                    <PageLink href="/csr" className="nav-link" testId="navbar-csr">
+                    <PageLink
+                      href="/csr"
+                      className="nav-link"
+                      testId="navbar-csr"
+                    >
                       Client-side rendered page
                     </PageLink>
                   </NavItem>
                   <NavItem>
-                    <PageLink href="/ssr" className="nav-link" testId="navbar-ssr">
+                    <PageLink
+                      href="/ssr"
+                      className="nav-link"
+                      testId="navbar-ssr"
+                    >
                       Server-side rendered page
                     </PageLink>
                   </NavItem>
                   <NavItem>
-                    <PageLink href="/external" className="nav-link" testId="navbar-external">
+                    <PageLink
+                      href="/external"
+                      className="nav-link"
+                      testId="navbar-external"
+                    >
                       External API
+                    </PageLink>
+                  </NavItem>
+                  <NavItem>
+                    <PageLink
+                      href="/dashboard"
+                      className="nav-link"
+                      testId="navbar-dashboard"
+                    >
+                      Dashboard
                     </PageLink>
                   </NavItem>
                 </>
@@ -64,13 +85,18 @@ const NavBar = () => {
                     href="/auth/login"
                     className="btn btn-primary btn-margin"
                     tabIndex={0}
-                    testId="navbar-login-desktop">
+                    testId="navbar-login-desktop"
+                  >
                     Log in
                   </AnchorLink>
                 </NavItem>
               )}
               {user && (
-                <UncontrolledDropdown nav inNavbar data-testid="navbar-menu-desktop">
+                <UncontrolledDropdown
+                  nav
+                  inNavbar
+                  data-testid="navbar-menu-desktop"
+                >
                   <DropdownToggle nav caret id="profileDropDown">
                     <img
                       src={user.picture}
@@ -87,12 +113,20 @@ const NavBar = () => {
                       {user.name}
                     </DropdownItem>
                     <DropdownItem className="dropdown-profile" tag="span">
-                      <PageLink href="/profile" icon="user" testId="navbar-profile-desktop">
+                      <PageLink
+                        href="/profile"
+                        icon="user"
+                        testId="navbar-profile-desktop"
+                      >
                         Profile
                       </PageLink>
                     </DropdownItem>
                     <DropdownItem id="qsLogoutBtn">
-                      <AnchorLink href="/auth/logout" icon="power-off" testId="navbar-logout-desktop">
+                      <AnchorLink
+                        href="/auth/logout"
+                        icon="power-off"
+                        testId="navbar-logout-desktop"
+                      >
                         Log out
                       </AnchorLink>
                     </DropdownItem>
@@ -106,7 +140,8 @@ const NavBar = () => {
                   href="/auth/login"
                   className="btn btn-primary btn-block"
                   tabIndex={0}
-                  testId="navbar-login-mobile">
+                  testId="navbar-login-mobile"
+                >
                   Log in
                 </AnchorLink>
               </Nav>
@@ -116,7 +151,8 @@ const NavBar = () => {
                 id="nav-mobile"
                 className="d-md-none justify-content-between"
                 navbar
-                data-testid="navbar-menu-mobile">
+                data-testid="navbar-menu-mobile"
+              >
                 <NavItem>
                   <span className="user-info">
                     <img
@@ -128,13 +164,20 @@ const NavBar = () => {
                       decode="async"
                       data-testid="navbar-picture-mobile"
                     />
-                    <h6 className="d-inline-block" data-testid="navbar-user-mobile">
+                    <h6
+                      className="d-inline-block"
+                      data-testid="navbar-user-mobile"
+                    >
                       {user.name}
                     </h6>
                   </span>
                 </NavItem>
                 <NavItem>
-                  <PageLink href="/profile" icon="user" testId="navbar-profile-mobile">
+                  <PageLink
+                    href="/profile"
+                    icon="user"
+                    testId="navbar-profile-mobile"
+                  >
                     Profile
                   </PageLink>
                 </NavItem>
@@ -143,7 +186,8 @@ const NavBar = () => {
                     href="/auth/logout"
                     className="btn btn-link p-0"
                     icon="power-off"
-                    testId="navbar-logout-mobile">
+                    testId="navbar-logout-mobile"
+                  >
                     Log out
                   </AnchorLink>
                 </NavItem>
