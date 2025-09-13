@@ -4,6 +4,7 @@ import PerformanceRadarChart from "../components/PerformanceRadarChart";
 import PlayerLeaderBoard from "../components/PlayerLeaderBoard";
 import PointsDistributionChart from "../components/PointsDistributionChart";
 import ShootingEfficiencyChart from "../components/ShootingEfficiencyChart";
+import { fetchDashboardTeam } from "@/lib/fetchDashboardTeam";
 
 export default async function DashboardPage() {
   const session = await auth0.getSession();
@@ -12,6 +13,9 @@ export default async function DashboardPage() {
   if (!user) {
     redirect("/auth/login");
   }
+
+  const externalTeamData = await fetchDashboardTeam();
+  console.log("External Team Data:", externalTeamData);
 
   return (
     <div>
