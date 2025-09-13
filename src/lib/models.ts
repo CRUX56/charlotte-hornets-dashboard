@@ -23,3 +23,12 @@ export interface PlayerData {
   draft_number: number | null;
   team: TeamData;
 }
+
+export interface DashboardClientProps {
+  externalTeamData: TeamData[];
+  teamRoster: PlayerData[];
+}
+
+export interface PlayerLeaderBoardProps {
+  teamRoster: PlayerData[];
+}
