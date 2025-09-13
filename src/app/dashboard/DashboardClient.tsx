@@ -1,28 +1,21 @@
 "use client";
 
-interface TeamData {
-  id: number;
-  conference: string;
-  division: string;
-  city: string;
-  name: string;
-  full_name: string;
-  abbreviation: string;
-}
+import { TeamData, PlayerData } from "@/lib/models";
 
 interface DashboardClientProps {
   externalTeamData: TeamData[];
+  teamRoster: PlayerData[];
 }
 
 export default function DashboardClient({
   externalTeamData,
+  teamRoster,
 }: DashboardClientProps) {
-  console.log("External Team Data (client):", externalTeamData);
-
   return (
     <div>
       {/* You can render or inspect externalTeamData here */}
       <pre>{JSON.stringify(externalTeamData, null, 2)}</pre>
+      <pre>{JSON.stringify(teamRoster, null, 2)}</pre>
     </div>
   );
 }

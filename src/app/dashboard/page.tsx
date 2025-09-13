@@ -5,6 +5,8 @@ import PlayerLeaderBoard from "../components/PlayerLeaderBoard";
 import PointsDistributionChart from "../components/PointsDistributionChart";
 import ShootingEfficiencyChart from "../components/ShootingEfficiencyChart";
 import { fetchDashboardTeam } from "@/lib/fetchDashboardTeam";
+import { fetchDashboardTeamRoster } from "@/lib/fetchDashboardTeamRoster";
+//import { fetchPlayerStats } from "@/lib/fetchPlayerStats";
 import DashboardClient from "./DashboardClient";
 
 export default async function DashboardPage() {
@@ -15,13 +17,20 @@ export default async function DashboardPage() {
     redirect("/auth/login");
   }
 
+  // Get data for the dashboard
   const externalTeamData = await fetchDashboardTeam();
-  console.log("External Team Data:", externalTeamData);
+  const teamRoster = await fetchDashboardTeamRoster(4);
+  //const playerStats = await fetchPlayerStats();
+  console.log("Team Roster Data:", JSON.stringify(teamRoster, null, 2));
+  //console.log("Player Stats Data:", JSON.stringify(playerStats, null, 2));
 
   return (
     <div>
       <h1>Welcome to the Dashboard, {user.name}!</h1>
-      <DashboardClient externalTeamData={externalTeamData} />
+      <DashboardClient
+        externalTeamData={externalTeamData}
+        teamRoster={teamRoster}
+      />
       <PerformanceRadarChart />
       <PlayerLeaderBoard />
       <PointsDistributionChart />
