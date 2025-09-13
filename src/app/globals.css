@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hornetsPurple: #1d1160;
+  --hornetsTeal: #00788c;
+  --hornetsGray: #a1a1a4;
 }
 
 @theme inline {
