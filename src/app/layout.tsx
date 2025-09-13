@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
           href="https://cdn.auth0.com/js/auth0-samples-theme/1.0/css/auth0-theme.min.css"
         />
+        <title>Charlotte Hornets Stats Dashboard</title>
       </head>
       <body>
         <Auth0Provider>
