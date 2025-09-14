@@ -6,7 +6,6 @@ import {
   Container,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   UncontrolledDropdown,
@@ -18,6 +17,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 import PageLink from "./PageLink";
 import AnchorLink from "./AnchorLink";
+import NavButton from "./NavButton";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,52 +28,35 @@ const NavBar = () => {
     <div className="nav-container" data-testid="navbar">
       <Navbar color="light" light expand="md">
         <Container>
-          <NavbarBrand className="logo" />
           <NavbarToggler onClick={toggle} data-testid="navbar-toggle" />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar data-testid="navbar-items">
               <NavItem>
-                <PageLink href="/" className="nav-link" testId="navbar-home">
+                <NavButton to="/" testId="navbar-home">
                   Home
-                </PageLink>
+                </NavButton>
               </NavItem>
               {user && (
                 <>
                   <NavItem>
-                    <PageLink
-                      href="/csr"
-                      className="nav-link"
-                      testId="navbar-csr"
-                    >
+                    <NavButton to="/csr" testId="navbar-csr">
                       Client-side rendered page
-                    </PageLink>
+                    </NavButton>
                   </NavItem>
                   <NavItem>
-                    <PageLink
-                      href="/ssr"
-                      className="nav-link"
-                      testId="navbar-ssr"
-                    >
+                    <NavButton to="/ssr" testId="navbar-ssr">
                       Server-side rendered page
-                    </PageLink>
+                    </NavButton>
                   </NavItem>
                   <NavItem>
-                    <PageLink
-                      href="/external"
-                      className="nav-link"
-                      testId="navbar-external"
-                    >
+                    <NavButton to="/external" testId="navbar-external">
                       External API
-                    </PageLink>
+                    </NavButton>
                   </NavItem>
                   <NavItem>
-                    <PageLink
-                      href="/dashboard"
-                      className="nav-link"
-                      testId="navbar-dashboard"
-                    >
+                    <NavButton to="/dashboard" testId="navbar-dashboard">
                       Dashboard
-                    </PageLink>
+                    </NavButton>
                   </NavItem>
                 </>
               )}
@@ -81,14 +64,13 @@ const NavBar = () => {
             <Nav className="d-none d-md-block" navbar>
               {!isLoading && !user && (
                 <NavItem id="qsLoginBtn">
-                  <AnchorLink
-                    href="/auth/login"
-                    className="btn btn-primary btn-margin"
+                  <NavButton
+                    to="/auth/login"
                     tabIndex={0}
                     testId="navbar-login-desktop"
                   >
                     Log in
-                  </AnchorLink>
+                  </NavButton>
                 </NavItem>
               )}
               {user && (
@@ -134,18 +116,7 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
-            {!isLoading && !user && (
-              <Nav className="d-md-none" navbar>
-                <AnchorLink
-                  href="/auth/login"
-                  className="btn btn-primary btn-block"
-                  tabIndex={0}
-                  testId="navbar-login-mobile"
-                >
-                  Log in
-                </AnchorLink>
-              </Nav>
-            )}
+
             {user && (
               <Nav
                 id="nav-mobile"

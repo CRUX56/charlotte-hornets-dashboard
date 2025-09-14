@@ -4,8 +4,10 @@ import "./globals.css";
 import { Inter, Roboto_Mono } from "next/font/google";
 import NavBar from "./components/NavBar";
 import { Container } from "reactstrap";
+import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import React from "react";
+
 import { Auth0Provider } from "@auth0/nextjs-auth0";
 
 import { ReactNode } from "react";
@@ -29,14 +31,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className={`${inter.variable} ${robotoMono.variable} font-sans`}>
         <Auth0Provider>
-          <main
-            id="app"
-            className="d-flex flex-column h-100"
-            data-testid="layout"
-          >
-            <NavBar />
-            <Container className="flex-grow-1 mt-5">{children}</Container>
-            <Footer />
+          <main id="app" className="h-screen w-full" data-testid="layout">
+            <div className="flex h-full w-full">
+              {/* Left: Navigation and Logo */}
+              <div className="w-1/3 bg-[var(--background)] flex flex-col items-center justify-between py-8">
+                {/* Add your Logo component here if desired */}
+                <Logo className="mb-8" />
+                <NavBar />
+                <Footer />
+              </div>
+              {/* Right: Main Content */}
+              <div className="w-2/3 h-full flex flex-col">
+                <Container className="flex-grow-1 mt-5">{children}</Container>
+              </div>
+            </div>
           </main>
         </Auth0Provider>
       </body>
