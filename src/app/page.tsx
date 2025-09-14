@@ -1,16 +1,12 @@
 "use client";
 
-import React from "react";
-
-import Hero from "./components/Hero";
-import Content from "./components/Content";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Index() {
-  return (
-    <>
-      <Hero />
-      <hr />
-      <Content />
-    </>
-  );
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/home");
+  }, [router]);
+  return null;
 }

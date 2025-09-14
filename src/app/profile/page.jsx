@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Row, Col } from 'reactstrap';
-import { useUser } from '@auth0/nextjs-auth0';
+import React from "react";
+import { Row, Col } from "reactstrap";
+import { useUser } from "@auth0/nextjs-auth0";
 
-import Loading from '../../components/Loading';
-import Highlight from '../../components/Highlight';
+import Loading from "../components/Loading";
+import Highlight from "../components/Highlight";
 
 export default function Profile() {
   const { user, isLoading } = useUser();
@@ -15,7 +15,10 @@ export default function Profile() {
       {isLoading && <Loading />}
       {user && (
         <>
-          <Row className="align-items-center profile-header mb-5 text-center text-md-left" data-testid="profile">
+          <Row
+            className="align-items-center profile-header mb-5 text-center text-md-left"
+            data-testid="profile"
+          >
             <Col md={2}>
               <img
                 src={user.picture}
