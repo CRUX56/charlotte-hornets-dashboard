@@ -27,6 +27,7 @@ export interface PlayerData {
 export interface DashboardClientProps {
   externalTeamData: TeamData[];
   teamRoster: PlayerData[];
+  mockStatistics: MockStatistics | null;
 }
 
 export interface PlayerLeaderBoardProps {

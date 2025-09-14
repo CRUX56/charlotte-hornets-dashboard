@@ -5,11 +5,13 @@ import PerformanceRadarChart from "../components/PerformanceRadarChart";
 import PointsDistributionChart from "../components/PointsDistributionChart";
 import ShootingEfficiencyChart from "../components/ShootingEfficiencyChart";
 import PlayerLeaderBoard from "../components/PlayerLeaderBoard";
+import PlayerStatsBoard from "../components/PlayerStatsBoard";
 import Card from "../components/Card";
 
 export default function DashboardClient({
   externalTeamData,
   teamRoster,
+  mockStatistics,
 }: DashboardClientProps) {
   return (
     <div className="min-h-screen w-full bg-[var(--hornetsGray)] flex flex-col items-center justify-start p-8">
@@ -22,14 +24,25 @@ export default function DashboardClient({
         <Card title="Player Leaderboard" className="col-span-1 md:col-span-2">
           <PlayerLeaderBoard teamRoster={teamRoster} />
         </Card>
+        <Card title="Current Roster 2025" className="col-span-1 md:col-span-2">
+          {/* Pass mockStatistics.data to PlayerStatsBoard */}
+          <PlayerStatsBoard mockStatistics={mockStatistics?.data ?? []} />
+        </Card>
         <Card title="Performance Radar Chart">
-          <PerformanceRadarChart />
+          <PerformanceRadarChart mockStatistics={mockStatistics?.data ?? []} />
         </Card>
         <Card title="Points Distribution Chart">
-          <PointsDistributionChart />
+          <PointsDistributionChart
+            mockStatistics={mockStatistics?.data ?? []}
+          />
         </Card>
-        <Card title="Shooting Efficiency Chart">
-          <ShootingEfficiencyChart />
+        <Card
+          title="Shooting Efficiency Chart"
+          className="col-span-1 md:col-span-2"
+        >
+          <ShootingEfficiencyChart
+            mockStatistics={mockStatistics?.data ?? []}
+          />
         </Card>
       </div>
       {/* Optionally render team data and roster for debugging */}

@@ -7,7 +7,6 @@ export default function PlayerLeaderBoard({
 }) {
   return (
     <div>
-      <h3 className="text-xl font-bold mb-4">Player Leaderboard</h3>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white rounded-lg shadow">
           <thead>
