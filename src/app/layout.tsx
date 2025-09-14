@@ -2,10 +2,6 @@
 
 import "./globals.css";
 import { Inter, Roboto_Mono } from "next/font/google";
-import NavBar from "./components/NavBar";
-import { Container } from "reactstrap";
-import Logo from "./components/Logo";
-import Footer from "./components/Footer";
 import React from "react";
 
 import { Auth0Provider } from "@auth0/nextjs-auth0";

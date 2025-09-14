@@ -89,8 +89,7 @@ function PerformanceRadarChart({ mockStatistics }: PerformanceRadarChartProps) {
 
   return (
     <div className="w-full max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">Performance Radar Chart</h2>
-      <div className="mb-4">
+      <div className="mb-4 flex text-align: center">
         <label htmlFor="player-select" className="mr-2 font-semibold">
           Select Player:
         </label>

@@ -9,45 +9,43 @@ import PlayerStatsBoard from "../components/PlayerStatsBoard";
 import Card from "../components/Card";
 
 export default function DashboardClient({
-  externalTeamData,
   teamRoster,
   mockStatistics,
 }: DashboardClientProps) {
   return (
-    <div className="min-h-screen w-full bg-[var(--hornetsGray)] flex flex-col items-center justify-start p-8">
-      <div className="w-full h-full flex flex-col items-left justify-start">
-        <h1 className="text-4xl font-bold text-[var(--hornetsPurple)] mb-8">
+    <div className="w-full min-h-screen bg-[var(--lightGray)] px-2 md:px-8 py-4 md:py-8">
+      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <h1 className="text-3xl md:text-4xl font-bold text-[var(--hornetsPurple)] mb-4 md:mb-0">
           Charlotte Hornets Dashboard
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
-        <Card title="Player Leaderboard" className="col-span-1 md:col-span-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-8 w-full">
+        <Card title="Player Leaderboard" className="col-span-1 sm:col-span-2">
           <PlayerLeaderBoard teamRoster={teamRoster} />
-        </Card>
-        <Card title="Current Roster 2025" className="col-span-1 md:col-span-2">
-          {/* Pass mockStatistics.data to PlayerStatsBoard */}
-          <PlayerStatsBoard mockStatistics={mockStatistics?.data ?? []} />
-        </Card>
-        <Card title="Performance Radar Chart">
-          <PerformanceRadarChart mockStatistics={mockStatistics?.data ?? []} />
-        </Card>
-        <Card title="Points Distribution Chart">
-          <PointsDistributionChart
-            mockStatistics={mockStatistics?.data ?? []}
-          />
         </Card>
         <Card
           title="Shooting Efficiency Chart"
-          className="col-span-1 md:col-span-2"
+          className="col-span-1 sm:col-span-2"
         >
           <ShootingEfficiencyChart
             mockStatistics={mockStatistics?.data ?? []}
           />
         </Card>
+        <Card title="Performance Radar Chart">
+          <PerformanceRadarChart mockStatistics={mockStatistics?.data ?? []} />
+        </Card>
+        <Card title="Current Roster 2025">
+          <PlayerStatsBoard mockStatistics={mockStatistics?.data ?? []} />
+        </Card>
+        <Card
+          title="Points Distribution Chart"
+          className="col-span-1 sm:col-span-2"
+        >
+          <PointsDistributionChart
+            mockStatistics={mockStatistics?.data ?? []}
+          />
+        </Card>
       </div>
-      {/* Optionally render team data and roster for debugging */}
-      {/* <pre>{JSON.stringify(externalTeamData, null, 2)}</pre>
-      <pre>{JSON.stringify(teamRoster, null, 2)}</pre> */}
     </div>
   );
 }
