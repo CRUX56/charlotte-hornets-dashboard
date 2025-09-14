@@ -30,23 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <title>Charlotte Hornets Stats Dashboard</title>
       </head>
       <body className={`${inter.variable} ${robotoMono.variable} font-sans`}>
-        <Auth0Provider>
-          <main id="app" className="h-screen w-full" data-testid="layout">
-            <div className="flex h-full w-full">
-              {/* Left: Navigation and Logo */}
-              <div className="w-1/3 bg-[var(--background)] flex flex-col items-center justify-between py-8">
-                {/* Add your Logo component here if desired */}
-                <Logo className="mb-8" />
-                <NavBar />
-                <Footer />
-              </div>
-              {/* Right: Main Content */}
-              <div className="w-2/3 h-full flex flex-col">
-                <Container className="flex-grow-1 mt-5">{children}</Container>
-              </div>
-            </div>
-          </main>
-        </Auth0Provider>
+        <Auth0Provider>{children}</Auth0Provider>
       </body>
     </html>
   );
