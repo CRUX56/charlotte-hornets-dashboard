@@ -12,16 +12,18 @@ export default function DashboardClient({
   teamRoster,
 }: DashboardClientProps) {
   return (
-    <div className="min-h-screen w-full bg-[var(--hornetsTeal)] flex flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold text-[var(--hornetsPurple)] mb-8">
-        Charlotte Hornets Dashboard
-      </h1>
+    <div className="min-h-screen w-full bg-[var(--hornetsGray)] flex flex-col items-center justify-start p-8">
+      <div className="w-full h-full flex flex-col items-left justify-start">
+        <h1 className="text-4xl font-bold text-[var(--hornetsPurple)] mb-8">
+          Charlotte Hornets Dashboard
+        </h1>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+        <Card title="Player Leaderboard" className="col-span-1 md:col-span-2">
+          <PlayerLeaderBoard teamRoster={teamRoster} />
+        </Card>
         <Card title="Performance Radar Chart">
           <PerformanceRadarChart />
-        </Card>
-        <Card title="Player Leaderboard">
-          <PlayerLeaderBoard teamRoster={teamRoster} />
         </Card>
         <Card title="Points Distribution Chart">
           <PointsDistributionChart />
